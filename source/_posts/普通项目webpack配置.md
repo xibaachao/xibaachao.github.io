@@ -7,7 +7,7 @@ tags:
 #### 个人使用webpack 配置
 
 - webpack 4.0
-- yarn
+- npm
 - 主要是单页的开发，和小项目页面开发。主要是打包js
 
 #### package.json

@@ -45,6 +45,7 @@ git checkout -b <branch> //创建分支并切换分支
 git checkout -b <new-branch> origin <branch> //获取远程分支并创建本地分支
 git branch <new-branch> //创建分支
 git branch -d <branch> //删除分支
+git remote set-url origin https://~.git //修改远程分支
 ```
 
 #### 标签
