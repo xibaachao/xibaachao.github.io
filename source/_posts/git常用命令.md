@@ -5,7 +5,14 @@ tags:
 - 服务器
 ---
 
+``git remote set-url origin https://~.git //修改远程分支``
+
+``git merge <branch> //合并分支``
+
+<!--more-->
+
 #### 初始化git工作目录
+
 ```
 git init //初始化目录
 git clone <url> //克隆远程
@@ -46,6 +53,7 @@ git checkout -b <new-branch> origin <branch> //获取远程分支并创建本地
 git branch <new-branch> //创建分支
 git branch -d <branch> //删除分支
 git remote set-url origin https://~.git //修改远程分支
+git commit --amend //修改最后一次commit -m 的内容
 ```
 
 #### 标签
