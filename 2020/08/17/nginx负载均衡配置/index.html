@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> nginx负载均衡配置 · 安然不哭</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="nginx负载均衡配置 - 西坝阿超"><meta name="keywords"><meta name="author" content="西坝阿超"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://xibaachao.github.io/atom.xml" title="安然不哭"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="安然不哭" type="application/atom+xml">
+</head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="文章" class="nav-list-link">文章</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">nginx负载均衡配置</h1><div class="post-info">2020-08-17<p class="visit"></p></div><div class="post-content"><h3 id="nginx-负载均衡配置及介绍"><a href="#nginx-负载均衡配置及介绍" class="headerlink" title="nginx 负载均衡配置及介绍"></a>nginx 负载均衡配置及介绍</h3><h4 id="什么是负载均衡"><a href="#什么是负载均衡" class="headerlink" title="什么是负载均衡"></a>什么是负载均衡</h4><p>负载均衡说白了就一个反向代理，看下图。</p>
+<p><img src="/images/2020/2.png" alt=""></p>
+<h4 id="为什么要使用负载均衡"><a href="#为什么要使用负载均衡" class="headerlink" title="为什么要使用负载均衡"></a>为什么要使用负载均衡</h4><p>1、解决高并发压力，提高web应用处理性能</p>
+<h4 id="负载均衡模式"><a href="#负载均衡模式" class="headerlink" title="负载均衡模式"></a>负载均衡模式</h4><blockquote>
+<p>1、默认模式（轮询）</p>
+<p>2、权重模式</p>
+<p>3、ip_hash</p>
+<p>4、url_hash</p>
+<p>5、第三发</p>
+</blockquote>
+<h4 id="默认模式"><a href="#默认模式" class="headerlink" title="默认模式"></a>默认模式</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">	 upstream temp &#123; //格式:upstream 名称</span><br><span class="line">        server 10.10.1.1:80;</span><br><span class="line">        server 10.10.1.2:80;</span><br><span class="line">        server example.com:80; //格式:域名+端口 或者 ip+端口</span><br><span class="line">    &#125;</span><br><span class="line">	server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：就是挨个访问，如果某个服务器宕机，那么就会跳过</p>
+<h4 id="权重模式"><a href="#权重模式" class="headerlink" title="权重模式"></a>权重模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    upstream temp &#123;</span><br><span class="line">        server 10.10.1.1:80 weight&#x3D;3;</span><br><span class="line">        server 10.10.1.2:80 weight&#x3D;7;</span><br><span class="line">    &#125;</span><br><span class="line">    server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：就是指定几率访问，比如weight=7 那么70%的流量就会走这台服务器</p>
+<h4 id="ip-hash"><a href="#ip-hash" class="headerlink" title="ip_hash"></a>ip_hash</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    upstream temp &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 10.10.1.1:80;</span><br><span class="line">        server 10.10.1.2:80;</span><br><span class="line">    &#125;</span><br><span class="line">	server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：ip_hash 会通过用户的ip定位服务器，比如：用户访问了A服务器，已经登录过了，已存在session。如果不是使用ip_hash那么就有可能会访问到B服务器，那么这个时候的session就会出现问题。当然我这里只是打个比方，一般用了负载均衡session都是要共享的，或者是使用radis来管理session</p>
+<h4 id="url-hash"><a href="#url-hash" class="headerlink" title="url_hash"></a>url_hash</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    upstream temp &#123;</span><br><span class="line">        hash $request_uri；</span><br><span class="line">        server 10.10.1.1:80;</span><br><span class="line">        server 10.10.1.2:80;</span><br><span class="line">    &#125;</span><br><span class="line">	server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：url_hash 会通过用户访问的url定位服务器。此模式需要使用<strong>高版本</strong>nginx，低版本需要自己安装扩展！</p>
+<h4 id="第三方（fair）"><a href="#第三方（fair）" class="headerlink" title="第三方（fair）"></a>第三方（fair）</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    upstream temp &#123;</span><br><span class="line">        fair;</span><br><span class="line">        server 10.10.1.1:80;</span><br><span class="line">        server 10.10.1.2:80;</span><br><span class="line">    &#125;</span><br><span class="line">	server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：哪台服务器响应快就访问哪台服务器！</p>
+<h4 id="其他常用配置说明"><a href="#其他常用配置说明" class="headerlink" title="其他常用配置说明"></a>其他常用配置说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    upstream temp &#123;</span><br><span class="line">        ip_hash;</span><br><span class="line">        server 10.10.1.1:80 down;&#x2F;&#x2F;表示这台服务器不参与负载</span><br><span class="line">        server 10.10.1.3:80 backup;&#x2F;&#x2F;表示这台服务器在其他服务器都宕机或者忙的时候在参与负载（不包含 down）</span><br><span class="line">        server 10.10.1.3:80 max_fails&#x3D;1;&#x2F;&#x2F;表示最大请求失败数，比如访问失败一次就跳过该服务器</span><br><span class="line">        server 10.10.1.4:80 fail_timeout&#x3D;5s;&#x2F;&#x2F;发生错误暂停5秒</span><br><span class="line">        server 10.10.1.5:80</span><br><span class="line">    &#125;</span><br><span class="line">	server&#123;       </span><br><span class="line">        listen 80;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/08/17/nginx%20http%E8%B7%B3%E8%BD%AC%E5%88%B0https/" title="nginx http跳转到https" class="prev">上一篇</a><a href="/2020/08/17/mac%E5%9B%BD%E5%86%85%E5%AE%89%E8%A3%85homebrew/" title="mac国内安装homebrew" class="next">下一篇</a></div><div class="copyright"><p>© 2012 - 2020 <a target="_blank">西坝阿超</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;"></span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>const valineAPI = (() => {
+try {
+    AV.init("aD8jJBpu4oew3ovNY73z6Rdq-gzGzoHsz", "FdzS5SOPHdhYQoEUngQ8K2QW");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>

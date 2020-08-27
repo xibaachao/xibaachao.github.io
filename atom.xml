@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>安然不哭</title>
+  
+  <subtitle>西坝阿超个人博客</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://xibaachao.github.io/"/>
+  <updated>2020-08-27T06:06:05.010Z</updated>
+  <id>https://xibaachao.github.io/</id>
+  
+  <author>
+    <name>西坝阿超</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack模块化开发</title>
+    <link href="https://xibaachao.github.io/2020/08/27/webpack%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/"/>
+    <id>https://xibaachao.github.io/2020/08/27/webpack%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/</id>
+    <published>2020-08-27T05:59:32.466Z</published>
+    <updated>2020-08-27T06:06:05.010Z</updated>
+    
+    <content type="html"><![CDATA[<p>webpack 多模块开发 模板使用 公用模板使用</p><a id="more"></a><h3 id="安装html-loader"><a href="#安装html-loader" class="headerlink" title="安装html-loader"></a>安装html-loader</h3><p><code>npm install html-loader</code></p><h3 id="配置html-loader"><a href="#配置html-loader" class="headerlink" title="配置html-loader"></a>配置html-loader</h3><ul><li><p>webpack.config.js</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">       rules: [&#123;</span><br><span class="line">       test: /\.(tpl)$/,</span><br><span class="line">               use:&#123;</span><br><span class="line">                 loader: 'html-loader',</span><br><span class="line">                 options: &#123;</span><br><span class="line">                   minimize: false</span><br><span class="line">                 &#125;</span><br><span class="line">               &#125;</span><br><span class="line">       &#125;]</span><br></pre></td></tr></table></figure><blockquote><p>注意！这里匹配的是.tpl的格式结尾的模板。</p></blockquote></li></ul><h3 id="页面引入模板"><a href="#页面引入模板" class="headerlink" title="页面引入模板"></a>页面引入模板</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">require</span>('<span class="attr">.</span>/<span class="attr">base</span>/<span class="attr">header.tpl</span>') %&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;webpack 多模块开发 模板使用 公用模板使用&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里大于-短信发送-sdk使用-PHP</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E9%98%BF%E9%87%8C%E5%A4%A7%E4%BA%8E-%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81-sdk%E4%BD%BF%E7%94%A8-PHP/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E9%98%BF%E9%87%8C%E5%A4%A7%E4%BA%8E-%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81-sdk%E4%BD%BF%E7%94%A8-PHP/</id>
+    <published>2020-08-17T03:32:39.216Z</published>
+    <updated>2020-08-17T03:32:39.216Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="安装sdk"><a href="#安装sdk" class="headerlink" title="安装sdk"></a>安装sdk</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require alibabacloud&#x2F;client</span><br></pre></td></tr></table></figure><h4 id="封装方法"><a href="#封装方法" class="headerlink" title="封装方法"></a>封装方法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendphone</span><span class="params">($code,$phone)</span></span>&#123;</span><br><span class="line">        AlibabaCloud::accessKeyClient(<span class="string">'AccessKeyId'</span>, <span class="string">'AccessKeySecret'</span>)-&gt;regionId(<span class="string">'cn-hangzhou'</span>)-&gt;asDefaultClient();</span><br><span class="line">        $result = AlibabaCloud::rpc()</span><br><span class="line">            -&gt;product(<span class="string">'Dysmsapi'</span>)</span><br><span class="line">            -&gt;version(<span class="string">'2017-05-25'</span>)</span><br><span class="line">            -&gt;action(<span class="string">'SendSms'</span>)</span><br><span class="line">            -&gt;method(<span class="string">'POST'</span>)</span><br><span class="line">            -&gt;host(<span class="string">'dysmsapi.aliyuncs.com'</span>)</span><br><span class="line">            -&gt;options([</span><br><span class="line">                <span class="string">'query'</span> =&gt; [</span><br><span class="line">                    <span class="string">'PhoneNumbers'</span> =&gt; $phone,</span><br><span class="line">                    <span class="string">'SignName'</span> =&gt; <span class="string">"签名"</span>,</span><br><span class="line">                    <span class="string">'TemplateCode'</span> =&gt; <span class="string">"模板id"</span>,</span><br><span class="line">                    <span class="string">'TemplateParam'</span>=&gt;<span class="string">'&#123;"code":"'</span>.$code.<span class="string">'"&#125;'</span></span><br><span class="line">                ],</span><br><span class="line">            ])</span><br><span class="line">            -&gt;request();</span><br><span class="line">        <span class="keyword">return</span> $result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><h4 id="其他帮助"><a href="#其他帮助" class="headerlink" title="其他帮助"></a>其他帮助</h4><p><a href="https://help.aliyun.com/document_detail/55359.html?spm=a2c4g.11186623.4.5.553a4e6aUAAElB" target="_blank" rel="noopener">官方SDK_DEMO</a></p><p><a href="https://api.aliyun.com/new?spm=a2c4g.11186623.2.13.667619d9f8wHAh#/?product=Dysmsapi&version=2017-05-25&api=SendSms&params={}&tab=DEMO&lang=PHP" target="_blank" rel="noopener">官方调试工具</a></p><p>本文更新，切正常使用时间 2020-1-1</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;安装sdk&quot;&gt;&lt;a href=&quot;#安装sdk&quot; class=&quot;headerlink&quot; title=&quot;安装sdk&quot;&gt;&lt;/a&gt;安装sdk&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="PHP" scheme="https://xibaachao.github.io/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读《爱，就注定了一生的漂泊》</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E8%AF%BB%E3%80%8A%E7%88%B1%EF%BC%8C%E5%B0%B1%E6%B3%A8%E5%AE%9A%E4%BA%86%E4%B8%80%E7%94%9F%E7%9A%84%E6%BC%82%E6%B3%8A%E3%80%8B/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E8%AF%BB%E3%80%8A%E7%88%B1%EF%BC%8C%E5%B0%B1%E6%B3%A8%E5%AE%9A%E4%BA%86%E4%B8%80%E7%94%9F%E7%9A%84%E6%BC%82%E6%B3%8A%E3%80%8B/</id>
+    <published>2020-08-17T03:32:39.215Z</published>
+    <updated>2020-08-17T03:32:39.215Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="爱，就注定了一生的漂泊（刘墉）"><a href="#爱，就注定了一生的漂泊（刘墉）" class="headerlink" title="爱，就注定了一生的漂泊（刘墉）"></a>爱，就注定了一生的漂泊（刘墉）</h4><p>怎么来说呢！这个书的语言描述非常的爽，让人看后，觉得很爽。</p><p>这个书对人物，对事物，对风景，甚至是对石头，都在描写爱，对人，对人的周边，这些能读懂，但是后面的对风景，对一些死物，我就有点看不懂了，也是跳过看的。</p><p>让我对爱，有一些新的认识，但是我描述不出来，算是读着特别爽的那种！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;爱，就注定了一生的漂泊（刘墉）&quot;&gt;&lt;a href=&quot;#爱，就注定了一生的漂泊（刘墉）&quot; class=&quot;headerlink&quot; title=&quot;爱，就注定了一生的漂泊（刘墉）&quot;&gt;&lt;/a&gt;爱，就注定了一生的漂泊（刘墉）&lt;/h4&gt;&lt;p&gt;怎么来说呢！这个书的语言描述非常的爽
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://xibaachao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="读后感" scheme="https://xibaachao.github.io/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推荐使用vscode插件</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8vscode%E6%8F%92%E4%BB%B6/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8vscode%E6%8F%92%E4%BB%B6/</id>
+    <published>2020-08-17T03:32:39.214Z</published>
+    <updated>2020-08-17T03:32:39.214Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="php开发"><a href="#php开发" class="headerlink" title="php开发"></a>php开发</h4><ul><li>PHP Intelephense</li><li>PHP IntelliSense</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;php开发&quot;&gt;&lt;a href=&quot;#php开发&quot; class=&quot;headerlink&quot; title=&quot;php开发&quot;&gt;&lt;/a&gt;php开发&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;PHP Intelephense&lt;/li&gt;
+&lt;li&gt;PHP IntelliSense&lt;/li&gt;
+&lt;/ul
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://xibaachao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="其他" scheme="https://xibaachao.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信小程序跳转</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC/</id>
+    <published>2020-08-17T03:32:39.214Z</published>
+    <updated>2020-08-17T03:32:39.214Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信小程序点击事件注册 传参等操作</p><p>微信小程序 页面跳转.<code>wx.navigateTo(OBJECT)</code>；.<code>wx.redirectTo(OBJECT)</code>；<code>wx.switchTab(OBJECT)</code>；<code>wx.navigateBack(OBJECT)</code></p><a id="more"></a><h3 id="wx-navigateTo"><a href="#wx-navigateTo" class="headerlink" title="wx.navigateTo"></a>wx.navigateTo</h3><p>跳转后可以返回前面的页面</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.navigateTo(&#123;</span><br><span class="line">  url: <span class="string">'xxx'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="wx-redirectTo"><a href="#wx-redirectTo" class="headerlink" title="wx.redirectTo"></a>wx.redirectTo</h4><p>跳转后关闭前面的页面</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.redirectTo(&#123;</span><br><span class="line">  url: <span class="string">'xxx'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="wx-switchTab"><a href="#wx-switchTab" class="headerlink" title="wx.switchTab"></a>wx.switchTab</h4><p>跳转tabBar 页面</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.switchTab(&#123;</span><br><span class="line"> url: <span class="string">'xxx'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h4 id="wx-navigateBack"><a href="#wx-navigateBack" class="headerlink" title="wx.navigateBack"></a>wx.navigateBack</h4><p>返回页面</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wx.navigateBack(&#123;</span><br><span class="line">  delta: <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//后退2个页面</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信小程序点击事件注册 传参等操作&lt;/p&gt;
+&lt;p&gt;微信小程序 页面跳转.&lt;code&gt;wx.navigateTo(OBJECT)&lt;/code&gt;；.&lt;code&gt;wx.redirectTo(OBJECT)&lt;/code&gt;；&lt;code&gt;wx.switchTab(OBJECT)&lt;/code&gt;；&lt;code&gt;wx.navigateBack(OBJECT)&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="微信小程序开发" scheme="https://xibaachao.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>普通项目webpack配置</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E6%99%AE%E9%80%9A%E9%A1%B9%E7%9B%AEwebpack%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E6%99%AE%E9%80%9A%E9%A1%B9%E7%9B%AEwebpack%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-08-17T03:32:39.214Z</published>
+    <updated>2020-08-17T03:32:39.214Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="个人使用webpack-配置"><a href="#个人使用webpack-配置" class="headerlink" title="个人使用webpack 配置"></a>个人使用webpack 配置</h4><ul><li>webpack 4.0</li><li>npm</li><li>主要是单页的开发，和小项目页面开发。主要是打包js</li></ul><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"test"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"MIT"</span>,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"compass-mixins"</span>: <span class="string">"^0.12.10"</span>,</span><br><span class="line">    <span class="string">"css-loader"</span>: <span class="string">"^3.4.2"</span>,</span><br><span class="line">    <span class="string">"file-loader"</span>: <span class="string">"^5.0.2"</span>,</span><br><span class="line">    <span class="string">"html-webpack-plugin"</span>: <span class="string">"^3.2.0"</span>,</span><br><span class="line">    <span class="string">"mini-css-extract-plugin"</span>: <span class="string">"^0.9.0"</span>,</span><br><span class="line">    <span class="string">"node-sass"</span>: <span class="string">"^4.13.1"</span>,</span><br><span class="line">    <span class="string">"postcss-loader"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">    <span class="string">"sass-loader"</span>: <span class="string">"^8.0.2"</span>,</span><br><span class="line">    <span class="string">"ts-loader"</span>: <span class="string">"^6.2.1"</span>,</span><br><span class="line">    <span class="string">"typescript"</span>: <span class="string">"^3.7.5"</span>,</span><br><span class="line">    <span class="string">"url-loader"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">    <span class="string">"webpack"</span>: <span class="string">"^4.41.5"</span>,</span><br><span class="line">    <span class="string">"webpack-cli"</span>: <span class="string">"^3.3.10"</span>,</span><br><span class="line">    <span class="string">"webpack-dev-server"</span>: <span class="string">"^3.10.1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        <span class="string">"index"</span>: <span class="string">"./src/js/index.ts"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">        filename: <span class="string">"./js/[name].js"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">            filename: <span class="string">'./css/[name].css'</span>,</span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            filename: <span class="string">"index.html"</span>,</span><br><span class="line">            template: <span class="string">"./src/index.html"</span>,</span><br><span class="line">            chunks: [<span class="string">"index"</span>]</span><br><span class="line">        &#125;),</span><br><span class="line"></span><br><span class="line">    ],</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [&#123;</span><br><span class="line">                test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">                use: [&#123;</span><br><span class="line">                        loader: MiniCssExtractPlugin.loader,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            publicPath: <span class="string">'../'</span>,</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: <span class="string">'css-loader'</span>,</span><br><span class="line"></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="string">'sass-loader'</span>,</span><br><span class="line">                ],</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.(png|svg|jpg|gif)$/</span>,</span><br><span class="line">                use: [&#123;</span><br><span class="line">                    loader: <span class="string">'url-loader'</span>, <span class="comment">//是指定使用的loader和loader的配置参数</span></span><br><span class="line">                    options: &#123;</span><br><span class="line">                        limit: <span class="number">500</span>, <span class="comment">//是把小于500B的文件打成Base64的格式，写入JS</span></span><br><span class="line">                        name: <span class="string">'./imgs/[name].[ext]'</span>,</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;]</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.tsx?$/</span>,</span><br><span class="line">                use: <span class="string">'ts-loader'</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">'.tsx'</span>, <span class="string">'.ts'</span>, <span class="string">'.js'</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    mode: <span class="string">"production"</span>,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        contentBase: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">        compress: <span class="literal">true</span>,</span><br><span class="line">        port: <span class="number">9000</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h4 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"outDir"</span>: <span class="string">"./dist/"</span>,</span><br><span class="line">    <span class="string">"noImplicitAny"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"module"</span>: <span class="string">"es6"</span>,</span><br><span class="line">    <span class="string">"target"</span>: <span class="string">"es5"</span>,</span><br><span class="line">    <span class="string">"jsx"</span>: <span class="string">"react"</span>,</span><br><span class="line">    <span class="string">"allowJs"</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;个人使用webpack-配置&quot;&gt;&lt;a href=&quot;#个人使用webpack-配置&quot; class=&quot;headerlink&quot; title=&quot;个人使用webpack 配置&quot;&gt;&lt;/a&gt;个人使用webpack 配置&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;webpack 4.0&lt;/li&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>查看docker容器错误</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E6%9F%A5%E7%9C%8Bdocker%E5%AE%B9%E5%99%A8%E9%94%99%E8%AF%AF/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E6%9F%A5%E7%9C%8Bdocker%E5%AE%B9%E5%99%A8%E9%94%99%E8%AF%AF/</id>
+    <published>2020-08-17T03:32:39.214Z</published>
+    <updated>2020-08-17T03:32:39.215Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="docker-查看容器错误"><a href="#docker-查看容器错误" class="headerlink" title="docker 查看容器错误"></a>docker 查看容器错误</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f -t --tail 10 容器名称 //查看容器最后10条的日志记录</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;docker-查看容器错误&quot;&gt;&lt;a href=&quot;#docker-查看容器错误&quot; class=&quot;headerlink&quot; title=&quot;docker 查看容器错误&quot;&gt;&lt;/a&gt;docker 查看容器错误&lt;/h4&gt;&lt;figure class=&quot;highlight bash
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="服务器" scheme="https://xibaachao.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端代码热更新</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/</id>
+    <published>2020-08-17T03:32:39.213Z</published>
+    <updated>2020-08-17T03:32:39.213Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前端代码热更新"><a href="#前端代码热更新" class="headerlink" title="前端代码热更新"></a>前端代码热更新</h4><ul><li>安装环境</li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add live-server</span><br></pre></td></tr></table></figure><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><blockquote><p>进入站点目录</p><p>在终端命令下输入live-server</p></blockquote><h4 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">live-server --port=80</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;前端代码热更新&quot;&gt;&lt;a href=&quot;#前端代码热更新&quot; class=&quot;headerlink&quot; title=&quot;前端代码热更新&quot;&gt;&lt;/a&gt;前端代码热更新&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;安装环境&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight jav
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端预览文件（word,excl,ppt,pdf）</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E5%89%8D%E7%AB%AF%E9%A2%84%E8%A7%88%E6%96%87%E4%BB%B6%EF%BC%88word,excl,ppt,pdf%EF%BC%89/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E5%89%8D%E7%AB%AF%E9%A2%84%E8%A7%88%E6%96%87%E4%BB%B6%EF%BC%88word,excl,ppt,pdf%EF%BC%89/</id>
+    <published>2020-08-17T03:32:39.213Z</published>
+    <updated>2020-08-17T03:32:39.213Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1、a标签预览"><a href="#1、a标签预览" class="headerlink" title="1、a标签预览"></a>1、a标签预览</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"文件地址"</span>&gt;</span>点击下载<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure><p>注： 好像只能预览pdf文件，而且还要看浏览器是否兼容，是否支持预览</p><h4 id="2、js-插件"><a href="#2、js-插件" class="headerlink" title="2、js 插件"></a>2、js 插件</h4><p>插件：<a href="https://github.com/malsup/media/blob/master/jquery.media.js" target="_blank" rel="noopener">jquery.media.js</a></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jquery.media.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"preview"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span>  </span><br><span class="line"><span class="javascript"> $(<span class="string">'#preview'</span>).media(&#123;</span></span><br><span class="line"><span class="actionscript">        width: <span class="string">'100%'</span>,</span></span><br><span class="line"><span class="actionscript">        height: <span class="string">'100%'</span>,</span></span><br><span class="line"><span class="actionscript">        autoplay:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">        src:<span class="string">'文件地址'</span></span></span><br><span class="line"> &#125;); </span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="3、在线预览"><a href="#3、在线预览" class="headerlink" title="3、在线预览"></a>3、在线预览</h4><p><a href="https://view.officeapps.live.com/op/view.aspx?src=网络地址" target="_blank" rel="noopener">https://view.officeapps.live.com/op/view.aspx?src=网络地址</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe src&#x3D;&#39;https:&#x2F;&#x2F;view.officeapps.live.com&#x2F;op&#x2F;view.aspx?src&#x3D;网络地址&#39; width&#x3D;&#39;100%&#39; height&#x3D;&#39;100%&#39; frameborder&#x3D;&#39;1&#39;&gt;</span><br><span class="line">&lt;&#x2F;iframe&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1、a标签预览&quot;&gt;&lt;a href=&quot;#1、a标签预览&quot; class=&quot;headerlink&quot; title=&quot;1、a标签预览&quot;&gt;&lt;/a&gt;1、a标签预览&lt;/h4&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信小程序点击事件</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/</id>
+    <published>2020-08-17T03:32:39.213Z</published>
+    <updated>2020-08-17T03:32:39.213Z</updated>
+    
+    <content type="html"><![CDATA[<p>微信小程序点击事件注册 传参等操作</p><a id="more"></a><h3 id="微信小程序点击事件-无参"><a href="#微信小程序点击事件-无参" class="headerlink" title="微信小程序点击事件(无参)"></a>微信小程序点击事件(无参)</h3><p>view 视图文件</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">"aaa"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure><p>js 文件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aaa:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">.....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="微信小程序点击事件-传参"><a href="#微信小程序点击事件-传参" class="headerlink" title="微信小程序点击事件(传参)"></a>微信小程序点击事件(传参)</h3><p>view 视图文件</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">"aaa"</span> <span class="attr">data-id</span>=<span class="string">"1"</span>&gt;</span>点击事件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure><p>js 文件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aaa:<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">let</span> index=e.currentTarget.dataset.id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;微信小程序点击事件注册 传参等操作&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="微信小程序开发" scheme="https://xibaachao.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>修改docker容器源</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E6%BA%90/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E4%BF%AE%E6%94%B9docker%E5%AE%B9%E5%99%A8%E6%BA%90/</id>
+    <published>2020-08-17T03:32:39.212Z</published>
+    <updated>2020-08-17T03:32:39.212Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="修改docker内部源"><a href="#修改docker内部源" class="headerlink" title="修改docker内部源"></a>修改docker内部源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//进入容器后</span><br><span class="line">sed -i <span class="string">"s@http://deb.debian.org@http://mirrors.aliyun.com@g"</span> /etc/apt/sources.list &amp;&amp; rm -Rf /var/lib/apt/lists/* &amp;&amp;  cat /etc/apt/sources.list</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;修改docker内部源&quot;&gt;&lt;a href=&quot;#修改docker内部源&quot; class=&quot;headerlink&quot; title=&quot;修改docker内部源&quot;&gt;&lt;/a&gt;修改docker内部源&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="服务器" scheme="https://xibaachao.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>停止、删除所有的docker容器和镜像</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E7%9A%84docker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E5%81%9C%E6%AD%A2%E3%80%81%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E7%9A%84docker%E5%AE%B9%E5%99%A8%E5%92%8C%E9%95%9C%E5%83%8F/</id>
+    <published>2020-08-17T03:32:39.212Z</published>
+    <updated>2020-08-17T03:32:39.212Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="docker停止和删除所有的容器和镜像"><a href="#docker停止和删除所有的容器和镜像" class="headerlink" title="docker停止和删除所有的容器和镜像"></a>docker停止和删除所有的容器和镜像</h4><h4 id="停止所有的容器"><a href="#停止所有的容器" class="headerlink" title="停止所有的容器"></a>停止所有的容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop $(docker ps -aq)</span><br></pre></td></tr></table></figure><h4 id="删除所有的容器"><a href="#删除所有的容器" class="headerlink" title="删除所有的容器"></a>删除所有的容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -aq)</span><br></pre></td></tr></table></figure><h4 id="删除所有的镜像"><a href="#删除所有的镜像" class="headerlink" title="删除所有的镜像"></a>删除所有的镜像</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;docker停止和删除所有的容器和镜像&quot;&gt;&lt;a href=&quot;#docker停止和删除所有的容器和镜像&quot; class=&quot;headerlink&quot; title=&quot;docker停止和删除所有的容器和镜像&quot;&gt;&lt;/a&gt;docker停止和删除所有的容器和镜像&lt;/h4&gt;&lt;h4 i
+      
+    
+    </summary>
+    
+    
+      <category term="服务器" scheme="https://xibaachao.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+      <category term="服务器" scheme="https://xibaachao.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>yarn安装及使用</title>
+    <link href="https://xibaachao.github.io/2020/08/17/yarn%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xibaachao.github.io/2020/08/17/yarn%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-08-17T03:32:39.211Z</published>
+    <updated>2020-08-17T03:32:39.211Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="yarn-安装"><a href="#yarn-安装" class="headerlink" title="yarn 安装"></a>yarn 安装</h4><p>注：需要先安装node.js</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure><h4 id="Yarn-常用命令"><a href="#Yarn-常用命令" class="headerlink" title="Yarn 常用命令"></a>Yarn 常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure><p>//查看版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init</span><br></pre></td></tr></table></figure><p>//初始化</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add xxxx</span><br></pre></td></tr></table></figure><p>//全局安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure><p>//安装插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add</span><br></pre></td></tr></table></figure><p>//添加包</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn publish</span><br></pre></td></tr></table></figure><p>//发布包</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn remove</span><br></pre></td></tr></table></figure><p>//移除包</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn upgrade</span><br></pre></td></tr></table></figure><p>//更新包</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn run</span><br></pre></td></tr></table></figure><p>//运行包</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn info &lt;packageName&gt;</span><br></pre></td></tr></table></figure><p>//查看包信息</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;yarn-安装&quot;&gt;&lt;a href=&quot;#yarn-安装&quot; class=&quot;headerlink&quot; title=&quot;yarn 安装&quot;&gt;&lt;/a&gt;yarn 安装&lt;/h4&gt;&lt;p&gt;注：需要先安装node.js&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;t
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows mac linux gopath配置</title>
+    <link href="https://xibaachao.github.io/2020/08/17/windows%20mac%20linux%20gopath%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xibaachao.github.io/2020/08/17/windows%20mac%20linux%20gopath%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-08-17T03:32:39.211Z</published>
+    <updated>2020-08-17T03:32:39.211Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="MAC-GOPATH-配置"><a href="#MAC-GOPATH-配置" class="headerlink" title="MAC GOPATH 配置"></a>MAC GOPATH 配置</h4><p>1、先创建一个go的工作目录 比如：/Users/你的用户名/app/go</p><p>2、编辑.bash_profile vim ~/.bash_profile</p><p>3、在.bash_profile中新增</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export GOPATH&#x3D;&#x2F;Users&#x2F;你的用户名&#x2F;app&#x2F;go</span><br></pre></td></tr></table></figure><p>4、保存</p><p>5、在/Users/你的用户名/app/go 下分别建立 bin、src、pkg文件夹</p><h4 id="windows-GOPATH配置"><a href="#windows-GOPATH配置" class="headerlink" title="windows GOPATH配置"></a>windows GOPATH配置</h4><p>1、先创建一个go的工作目录，比如D:\app\go</p><p>2、右键计算机属性-&gt;系统高级设置-&gt;环境变量</p><p><img src="/images/2020/5.png" alt=""></p><p>3、添加或者修改GOPATH 路径如上图</p><p>4、确定</p><p>5、在go工作目录下分别建立 bin、src、pkg文件夹</p><h4 id="LINUX-GOPATH配置"><a href="#LINUX-GOPATH配置" class="headerlink" title="LINUX GOPATH配置"></a>LINUX GOPATH配置</h4><p>1、先创建一个go的工作目录，比如/home/app/go</p><p>2、编辑profile vim /etc/profile</p><p>3、配置go环境</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOROOT&#x3D;&#x2F;usr&#x2F;local&#x2F;go  #设置为go安装的路径，有些安装包会自动设置默认的goroot</span><br><span class="line">export GOPATH&#x3D;$HOME&#x2F;gocode   #默认安装包的路径</span><br><span class="line">export PATH&#x3D;$PATH:$GOROOT&#x2F;bin:$GOPATH&#x2F;bin</span><br></pre></td></tr></table></figure><p>4、生效profile (命令：source /etc/profile)</p><p>5、在go工作目录下分别建立 bin、src、pkg文件夹</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;MAC-GOPATH-配置&quot;&gt;&lt;a href=&quot;#MAC-GOPATH-配置&quot; class=&quot;headerlink&quot; title=&quot;MAC GOPATH 配置&quot;&gt;&lt;/a&gt;MAC GOPATH 配置&lt;/h4&gt;&lt;p&gt;1、先创建一个go的工作目录 比如：/Users/你
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="GO" scheme="https://xibaachao.github.io/tags/GO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为什么要写博客</title>
+    <link href="https://xibaachao.github.io/2020/08/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://xibaachao.github.io/2020/08/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E5%8D%9A%E5%AE%A2/</id>
+    <published>2020-08-17T03:32:39.211Z</published>
+    <updated>2020-08-17T03:32:39.212Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="为什么要写博客"><a href="#为什么要写博客" class="headerlink" title="为什么要写博客"></a>为什么要写博客</h3><p><img src="/images/2020/1.jpg" alt="为什么要写博客"></p><h4 id="展示自我"><a href="#展示自我" class="headerlink" title="展示自我"></a>展示自我</h4><p>为什么要写博客！</p><p>大家都知道自我展示分为很多种，比如发朋友圈、发抖音，写日志微博、博客、段子等，但是其中写博客是逼格最高的一种。</p><p>写博客的主要是炫耀，我的文笔，我的思想，我的成就，我的经验，哪怕写的不好，也能当做是自己的一个经验记录，我就是这样的，我是一个程序员，时常会遇到各种各样的问题。将这些问题都记录到自己的博客里面，以后在遇到这样的问题就可以快速找到解决方案。</p><h4 id="分享知识"><a href="#分享知识" class="headerlink" title="分享知识"></a>分享知识</h4><p>不管在工作还是在生活中，我们总是会遇到各种各样的问题，也会累积各种各样的经验，但是我们不将这些经验记录下来，在我心里始终觉得就是一种浪费，不给别人留点什么，但是也应该给自己留点什么。这些经验知识都是无价之宝，都是我们在日常生活中交了不少学费的。只有经历了这些才会明白，才会有真实的体验。</p><p>当然我本身就是一个爱分享的人。我希望别人在遇到我所以遇到的问题的时候，能够少走些弯路，能够快速的搞定问题，提升自我。并且要加上自己的体会。</p><h4 id="总结经验"><a href="#总结经验" class="headerlink" title="总结经验"></a>总结经验</h4><p>在工作中，我老是会遇到一些爱“问问题的人”，这就让我尴尬了，理论上来说，别人问你是看的起你，你应该给别人做认真解答的。但是你特么老是问老是问，就烦了，而且同一个问题要问好几次，提问方式也不一样，告诉过你的解决方案，自己不去总结下，就恶心。你说，我在心里面已经默默的总结过了，有卵用，过后，你特么不是还来问我吗，我那个去。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;为什么要写博客&quot;&gt;&lt;a href=&quot;#为什么要写博客&quot; class=&quot;headerlink&quot; title=&quot;为什么要写博客&quot;&gt;&lt;/a&gt;为什么要写博客&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;/images/2020/1.jpg&quot; alt=&quot;为什么要写博客&quot;&gt;&lt;/p&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://xibaachao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="其他" scheme="https://xibaachao.github.io/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack常用loader和插件</title>
+    <link href="https://xibaachao.github.io/2020/08/17/webpack%E5%B8%B8%E7%94%A8loader%E5%92%8C%E6%8F%92%E4%BB%B6/"/>
+    <id>https://xibaachao.github.io/2020/08/17/webpack%E5%B8%B8%E7%94%A8loader%E5%92%8C%E6%8F%92%E4%BB%B6/</id>
+    <published>2020-08-17T03:32:39.210Z</published>
+    <updated>2020-08-17T03:32:39.210Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="url-loader"><a href="#url-loader" class="headerlink" title="url loader"></a>url loader</h4><blockquote><p>配置图片使用base64</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev url-loader</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(png|jpg|gif)$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: <span class="string">'url-loader'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">              limit: <span class="number">8192</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://www.webpackjs.com/loaders/url-loader/" target="_blank" rel="noopener">https://www.webpackjs.com/loaders/url-loader/</a></p><h4 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h4><blockquote><p>文件预处理器(用来处理es6语法什么的)</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-loader@<span class="number">8.0</span><span class="number">.0</span>-beta<span class="number">.0</span> @babel/core @babel/preset-env webpack</span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">      use: &#123;</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          presets: [<span class="string">'@babel/preset-env'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://www.webpackjs.com/loaders/babel-loader/" target="_blank" rel="noopener">https://www.webpackjs.com/loaders/babel-loader/</a></p><h4 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h4><blockquote><p>sass 编译器</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install sass-loader node-sass webpack --save-dev</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">      test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">      use: [&#123;</span><br><span class="line">          loader: <span class="string">"style-loader"</span> <span class="comment">// 将 JS 字符串生成为 style 节点</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          loader: <span class="string">"css-loader"</span> <span class="comment">// 将 CSS 转化成 CommonJS 模块</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          loader: <span class="string">"sass-loader"</span> <span class="comment">// 将 Sass 编译成 CSS</span></span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://www.webpackjs.com/loaders/sass-loader/" target="_blank" rel="noopener">https://www.webpackjs.com/loaders/sass-loader/</a></p><h4 id="mini-css-extract-plugin"><a href="#mini-css-extract-plugin" class="headerlink" title="mini-css-extract-plugin"></a>mini-css-extract-plugin</h4><blockquote><p>将css提取到单独的文件</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev mini-css-extract-plugin</span><br><span class="line"><span class="keyword">const</span> MiniCssExtractPlugin = <span class="built_in">require</span>(<span class="string">'mini-css-extract-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">      <span class="comment">// Options similar to the same options in webpackOptions.output</span></span><br><span class="line">      <span class="comment">// both options are optional</span></span><br><span class="line">      filename: <span class="string">'[name].css'</span>,</span><br><span class="line">      chunkFilename: <span class="string">'[id].css'</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          &#123;</span><br><span class="line">            loader: MiniCssExtractPlugin.loader,</span><br><span class="line">            options: &#123;</span><br><span class="line">              publicPath: <span class="string">'/public/path/to/'</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="string">'css-loader'</span>,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://github.com/webpack-contrib/mini-css-extract-plugin" target="_blank" rel="noopener">https://github.com/webpack-contrib/mini-css-extract-plugin</a></p><h4 id="DefinePlugin"><a href="#DefinePlugin" class="headerlink" title="DefinePlugin"></a>DefinePlugin</h4><blockquote><p>定义全局变量的</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  plugins: [</span><br><span class="line">new webpack.DefinePlugin(&#123;</span><br><span class="line">        &#39;url&#39;: &quot;xxx.com&quot;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">  ],</span><br></pre></td></tr></table></figure><p><a href="https://webpack.docschina.org/plugins/define-plugin/" target="_blank" rel="noopener">https://webpack.docschina.org/plugins/define-plugin/</a></p><h4 id="htmlwebpackplugin"><a href="#htmlwebpackplugin" class="headerlink" title="htmlwebpackplugin"></a>htmlwebpackplugin</h4><blockquote><p>html构建工具</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br><span class="line">var HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;);</span><br><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  entry: &#39;index.js&#39;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;.&#x2F;dist&#39;),</span><br><span class="line">    filename: &#39;index_bundle.js&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [new HtmlWebpackPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://webpack.docschina.org/plugins/html-webpack-plugin/" target="_blank" rel="noopener">https://webpack.docschina.org/plugins/html-webpack-plugin/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;url-loader&quot;&gt;&lt;a href=&quot;#url-loader&quot; class=&quot;headerlink&quot; title=&quot;url loader&quot;&gt;&lt;/a&gt;url loader&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;配置图片使用base64&lt;/p&gt;
+&lt;/blockq
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webpack配置使用</title>
+    <link href="https://xibaachao.github.io/2020/08/17/webpack%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xibaachao.github.io/2020/08/17/webpack%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-08-17T03:32:39.210Z</published>
+    <updated>2020-08-17T03:32:39.210Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="webpack-配置文件说明"><a href="#webpack-配置文件说明" class="headerlink" title="webpack 配置文件说明"></a>webpack 配置文件说明</h4><p>webpack.config.js</p><h4 id="简易配置"><a href="#简易配置" class="headerlink" title="简易配置"></a>简易配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    entry:<span class="string">""</span>,<span class="comment">//入口文件</span></span><br><span class="line">    output:&#123;<span class="comment">//输出文件</span></span><br><span class="line">    path:path.resolve(__dirname,<span class="string">"dist"</span>),<span class="comment">//指定目录</span></span><br><span class="line">filename:<span class="string">"xxxx.js"</span>,<span class="comment">//文件名</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="多入口配置"><a href="#多入口配置" class="headerlink" title="多入口配置"></a>多入口配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const path&#x3D;require(&#39;path&#39;);</span><br><span class="line">module.exports&#x3D;&#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">    home:&quot;.&#x2F;home.js&quot;,</span><br><span class="line">    welcome:&quot;.&#x2F;welcome.js&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;&#x2F;&#x2F;输出文件</span><br><span class="line">    path:path.resolve(__dirname,&quot;dist&quot;),&#x2F;&#x2F;指定目录</span><br><span class="line">filename:&quot;[name].js&quot;,&#x2F;&#x2F;文件名</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;webpack-配置文件说明&quot;&gt;&lt;a href=&quot;#webpack-配置文件说明&quot; class=&quot;headerlink&quot; title=&quot;webpack 配置文件说明&quot;&gt;&lt;/a&gt;webpack 配置文件说明&lt;/h4&gt;&lt;p&gt;webpack.config.js&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="前端开发" scheme="https://xibaachao.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win0 开机启动</title>
+    <link href="https://xibaachao.github.io/2020/08/17/win0%20%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/"/>
+    <id>https://xibaachao.github.io/2020/08/17/win0%20%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</id>
+    <published>2020-08-17T03:32:39.210Z</published>
+    <updated>2020-08-17T03:32:39.210Z</updated>
+    
+    <content type="html"><![CDATA[<p>运行shell:startup</p><a id="more"></a><p>运行shell:startup</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;运行shell:startup&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件推荐" scheme="https://xibaachao.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="软件使用" scheme="https://xibaachao.github.io/tags/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win10 关闭休眠</title>
+    <link href="https://xibaachao.github.io/2020/08/17/win10%20%E5%85%B3%E9%97%AD%E4%BC%91%E7%9C%A0/"/>
+    <id>https://xibaachao.github.io/2020/08/17/win10%20%E5%85%B3%E9%97%AD%E4%BC%91%E7%9C%A0/</id>
+    <published>2020-08-17T03:32:39.210Z</published>
+    <updated>2020-08-17T03:32:39.211Z</updated>
+    
+    <content type="html"><![CDATA[<p>运行powercfg -h off</p><a id="more"></a><p>运行powercfg -h off</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;运行powercfg -h off&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="软件推荐" scheme="https://xibaachao.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="软件使用" scheme="https://xibaachao.github.io/tags/%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>thinkphp5.1验证码使用</title>
+    <link href="https://xibaachao.github.io/2020/08/17/thinkphp5.1%E9%AA%8C%E8%AF%81%E7%A0%81%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xibaachao.github.io/2020/08/17/thinkphp5.1%E9%AA%8C%E8%AF%81%E7%A0%81%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-08-17T03:32:39.209Z</published>
+    <updated>2020-08-17T03:32:39.209Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">composer require topthink&#x2F;think-captcha &#x2F;&#x2F;thinkphp5.0</span><br><span class="line">composer require topthink&#x2F;think-captcha&#x3D;2.0.* &#x2F;&#x2F;thinkphp5.1</span><br></pre></td></tr></table></figure><h4 id="生成验证码"><a href="#生成验证码" class="headerlink" title="生成验证码"></a>生成验证码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">use think\captcha\Captcha;&#x2F;&#x2F;引入包</span><br><span class="line">public function verify()</span><br><span class="line">    &#123;</span><br><span class="line">        $captcha &#x3D; new Captcha();</span><br><span class="line">        $captcha-&gt;fontSize &#x3D; 30;</span><br><span class="line">        $captcha-&gt;length   &#x3D; 4;</span><br><span class="line">        $captcha-&gt;useNoise &#x3D; false;</span><br><span class="line">        return $captcha-&gt;entry(&quot;captcha&quot;);&#x2F;&#x2F;生成验证码，并打个标签</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="前端展示"><a href="#前端展示" class="headerlink" title="前端展示"></a>前端展示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;&#123;:url(&#39;admin&#x2F;tool&#x2F;verify&#39;)&#125;&quot; onclick&#x3D;&quot;this.src&#x3D;this.src+&#39;&amp;&#39;+Math.random()&quot; width&#x3D;&quot;120&quot; height&#x3D;&quot;40&quot; &gt;</span><br></pre></td></tr></table></figure><h4 id="后端检查"><a href="#后端检查" class="headerlink" title="后端检查"></a>后端检查</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$captcha &#x3D; new Captcha();</span><br><span class="line"> if(!$captcha-&gt;check(input(&quot;vercode&quot;),&quot;captcha&quot;))</span><br><span class="line"> &#123;</span><br><span class="line">  return [&quot;code&quot;&#x3D;&gt;-1,&quot;msg&quot;&#x3D;&gt;&quot;验证码错误&quot;];</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><p>注：<br>input(“vercode”);//用户输入的验证码<br>captcha；//为什么生成验证码时候打的标签</p><h4 id="更多看官方"><a href="#更多看官方" class="headerlink" title="更多看官方"></a>更多看官方</h4><p><a href="https://www.kancloud.cn/manual/thinkphp5_1/354122" target="_blank" rel="noopener">thinkphp5.1</a></p><p><a href="https://www.kancloud.cn/manual/thinkphp5/154295" target="_blank" rel="noopener">thinkphp5.0</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;安装插件&quot;&gt;&lt;a href=&quot;#安装插件&quot; class=&quot;headerlink&quot; title=&quot;安装插件&quot;&gt;&lt;/a&gt;安装插件&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://xibaachao.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="PHP" scheme="https://xibaachao.github.io/tags/PHP/"/>
+    
+  </entry>
+  
+</feed>

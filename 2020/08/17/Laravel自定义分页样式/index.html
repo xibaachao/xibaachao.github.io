@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="baidu-site-verification" content="1EB8XoOl0C"><meta name="google-site-verification" content="K7thEgdLm0UfRWJ5MGdF7sCcjClSzAlxFLPv2Oz5CGM"><title> Laravel自定义分页样式 · 安然不哭</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Laravel自定义分页样式 - 西坝阿超"><meta name="keywords"><meta name="author" content="西坝阿超"><link rel="short icon" href="/images/favicon.ico"><link rel="stylesheet" href="/css/bubuzou.css"><link rel="search" type="application/opensearchdescription+xml" href="https://xibaachao.github.io/atom.xml" title="安然不哭"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="安然不哭" type="application/atom+xml">
+</head><body><header><div class="header row"> <a href="/" class="logo-link"><img src="/images/logo.png"></a><ul id="nav_list" class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" data-hover="文章" class="nav-list-link">文章</a></li><li class="nav-list-item"><a href="/archives/" target="_self" data-hover="归档" class="nav-list-link">归档</a></li></ul><div class="search"><a id="search_btn" href="#search"></a></div><div id="nav_btn" class="nav-btn"><span></span><span></span><span></span></div></div></header><div class="row scroll-con"><section class="container"><!-- for archive page--><div id="postAr" class="post"><article class="post-block"><h1 class="post-title">Laravel自定义分页样式</h1><div class="post-info">2020-08-17<p class="visit"></p></div><div class="post-content"><p><code>Laravel</code> 的分页组件默认为 <code>Bootstrap</code> 的分页样式，但如果我们用的并不是 <code>Bootstrap</code> 或者说分页的 <code>HTML</code>结构不一样，这时我们需要自定义分页。其实 <code>Laravel</code> 的分页组件是非常的灵活，可以通过几种方法去实现我们的需求。</p>
+<a id="more"></a>
+
+<h3 id="创建分页视图"><a href="#创建分页视图" class="headerlink" title="创建分页视图"></a>创建分页视图</h3><p>在 <code>resources/views</code> 目录下创建 <code>pagination</code> 目录，并创建一个视图<code>default.blade.php</code> 。添加一下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="pagination"&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li class="previous &#123;&#123; ($paginator-&gt;currentPage() == 1) ? ' disabled' : '' &#125;&#125;"&gt;</span><br><span class="line">            &lt;a href=<span class="string">"&#123;&#123; $paginator-&gt;url(1) &#125;&#125;"</span>&gt;第一页&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li class=""&gt;</span><br><span class="line">            &lt;a href=<span class="string">"&#123;&#123; $paginator-&gt;previousPageUrl() &#125;&#125;"</span>&gt;上一页&lt;/a&gt;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        @<span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= $paginator-&gt;lastPage(); $i++)</span><br><span class="line">            &lt;li class="&#123;&#123; ($paginator-&gt;currentPage() == $i) ? ' active' : '' &#125;&#125;"&gt;</span><br><span class="line">                &lt;a href=<span class="string">"&#123;&#123; $paginator-&gt;url($i) &#125;&#125;"</span>&gt;&#123;&#123; $i &#125;&#125;&lt;/a&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            @<span class="keyword">endfor</span></span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                •••</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li class="next"&gt;</span><br><span class="line">                &lt;a href=<span class="string">"&#123;&#123; $paginator-&gt;nextPageUrl()&#125;&#125;"</span>&gt;</span><br><span class="line">                    下一页</span><br><span class="line">                &lt;/a&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line"></span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                跳转&amp;nbsp;&lt;input type=<span class="string">"text"</span> id=<span class="string">"page"</span> style=<span class="string">"text-align: center;"</span>&gt;&amp;nbsp;页</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">            &lt;li class="active"&gt;</span><br><span class="line">                &lt;a href=<span class="string">"javascript:go();"</span>&gt;GO&lt;/a&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">go</span><span class="params">(id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> page = document.getElementById(<span class="string">"page"</span>).value;</span><br><span class="line">        <span class="keyword">var</span> url = window.location.href+<span class="string">"?&amp;page="</span>+page;</span><br><span class="line">        window.location.href=url;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他常用常用函数说明"><a href="#其他常用常用函数说明" class="headerlink" title="其他常用常用函数说明"></a>其他常用常用函数说明</h3><p><code>$paginator-&gt;currentPage()</code>：获取当前页</p>
+<p><code>$paginator-&gt;lastPage()</code>：获取尾页</p>
+<p><code>$paginator-&gt;url($page)</code>：获取页码的URL</p>
+<p>具体参数参考：<a href="https://learnku.com/docs/laravel/7.x/pagination/7495#paginator-instance-methods" target="_blank" rel="noopener">https://learnku.com/docs/laravel/7.x/pagination/7495#paginator-instance-methods</a></p>
+</div></article></div><div class="right-container"><div class="widget"><div id="arAnchorBar"></div></div></div></section></div><div class="right-menu"></div><div class="modal search-modal"><div class="input-field"><input type="text" id="search_input"><label for="search-input">搜索</label></div><div id="search_result" class="search-result"></div></div><div class="blog-overlay"></div><footer class="row"><div class="footer-con"><div class="paginator"><a href="/2020/08/17/Chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E9%BB%98%E8%AE%A4%E6%89%93%E5%BC%80%E6%97%A0%E7%97%95%E6%A8%A1%E5%BC%8F/" title="Chrome浏览器默认打开无痕模式" class="prev">上一篇</a></div><div class="copyright"><p>© 2012 - 2020 <a target="_blank">西坝阿超</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <br> and <a href="https://github.com/Bulandent/hexo-theme-bubuzou" target="_blank">hexo-theme-bubuzou</a></p><p> <span style="padding-right: 6px;"></span></p></div><div class="totop"><i></i></div></div></footer><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="/scripts/jquery-1.8.2.min.js"></script><script src="/scripts/ar-anchor.js"></script><script src="/scripts/main.js"></script><script>const valineAPI = (() => {
+try {
+    AV.init("aD8jJBpu4oew3ovNY73z6Rdq-gzGzoHsz", "FdzS5SOPHdhYQoEUngQ8K2QW");
+} catch(error) {}
+const isExist = (identity) => {
+    identity = identity || getRealPath();
+    let query = new AV.Query('Timer');
+    return new Promise((resolve, reject) => {
+    query.equalTo("identity", identity);
+    query.find().then(results => {
+        resolve(results.length > 0);
+    }, error => reject(error));
+    })
+}
+
+const _get = (identity) => {
+    let query = null;
+    if(identity && identity instanceof Array){
+    let querys = [];
+    for(let i = 0; i < identity.length; ++i) {
+        querys[i] = new AV.Query('Timer');
+        querys[i].equalTo('identity', identity[i]);
+    }
+    query = AV.Query.or.apply(null ,querys);
+    } else {
+    identity = identity || getRealPath();
+    query = new AV.Query("Timer");
+    query.equalTo("identity", identity);
+    }
+
+    return new Promise((resolve, reject) => {
+    query.find()
+    .then(results => resolve(results))
+    .catch(error => reject(error))
+    })
+}
+
+const create = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let Todo = AV.Object.extend('Timer');
+    let todo = new Todo();
+    todo.set("times", 1);
+    todo.set("identity", identity);
+    todo.save().then(res => resolve(true), error => reject(error));
+    })
+}
+
+const update = (identity) => {
+    identity = identity || getRealPath();
+    return new Promise((resolve, reject) => {
+    let query = new AV.Query('Timer');
+    query.equalTo("identity", identity);
+    query.find().then(todos => {
+        todos.forEach(todo => {
+        todo.set("times", todo.attributes.times + 1);
+        });
+        return AV.Object.saveAll(todos);
+    }).then(todos => resolve(true), error => reject(error));
+    })
+}
+
+return {
+    isExist,
+    _get,
+    update,
+    create
+}
+})()
+
+const calcAndWriteTimes = () => {
+let isPost = true;
+
+let timerAllDOM = document.querySelectorAll(".article-timer");
+
+if(isPost) {
+    let identity = timerAllDOM[0].getAttribute("data-identity");
+    valineAPI.isExist(identity)
+    .then(exist => {
+    if(exist) {
+        return valineAPI.update(identity);
+    }
+    return new Promise(resolve => resolve(true));
+    })
+    .then( succuess => valineAPI._get(identity))
+    .then( result => timerAllDOM[0].innerText = result[0].attributes.times)
+    .catch(error => console.log(error.message))
+    return ;
+}
+
+let timerDOMCache = {};
+
+for(let timerDOM of timerAllDOM) {
+    let identity = timerDOM.getAttribute("data-identity");
+    if(timerDOMCache.hasOwnProperty(identity)){
+    timerDOMCache[identity].dom.push(timerDOM);
+    }else{
+    timerDOMCache[identity] = {
+        dom: [timerDOM],
+        times: undefined
+    };
+    }
+}
+
+let identities = Object.keys(timerDOMCache);
+valineAPI._get(identities).then(results => {
+    for(let result of results) {
+    let {identity, times} = result.attributes;
+    timerDOMCache[identity].times = times;
+    timerDOMCache[identity].dom.map(item => item.innerText = times);
+    }
+    for(let identity of identities) {
+    if(timerDOMCache[identity].times){
+        continue;
+    }
+    timerDOMCache[identity].dom.map(item => item.innerText = 1);
+    valineAPI.create(identity);
+    }
+}).catch(error => console.log(error.message))
+}
+
+if(true){
+calcAndWriteTimes();
+}</script></body></html>
